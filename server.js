@@ -19,11 +19,20 @@ const MIME = {
   ".md": "text/markdown; charset=utf-8", ".woff2": "font/woff2", ".txt": "text/plain"
 };
 
+const MAX_BODY = 8 * 1024 * 1024;
+
 const readBody = (req) => new Promise((res, rej) => {
   let b = ""; let size = 0;
   req.on("data", (c) => {
+    if (size > MAX_BODY) return;              // already rejected — stop accumulating
     size += c.length;
-    if (size > 8 * 1024 * 1024) { rej(new Error("payload too large")); req.destroy(); return; }
+    if (size > MAX_BODY) {
+      const err = new Error("payload too large (max 8 MB)");
+      err.status = 413;
+      req.pause();                            // keep the socket alive so the 413 is delivered
+      rej(err);
+      return;
+    }
     b += c;
   });
   req.on("end", () => res(b));
@@ -31,7 +40,9 @@ const readBody = (req) => new Promise((res, rej) => {
 });
 
 const send = (res, code, data, type) => {
-  res.writeHead(code, { "Content-Type": type || "application/json; charset=utf-8", "Cache-Control": "no-store" });
+  const headers = { "Content-Type": type || "application/json; charset=utf-8", "Cache-Control": "no-store" };
+  if (code === 413) headers.Connection = "close";
+  res.writeHead(code, headers);
   res.end(data);
 };
 
@@ -60,12 +71,17 @@ const server = http.createServer(async (req, res) => {
       if (!body.config || !body.config.brand || !body.config.services)
         return send(res, 400, JSON.stringify({ error: "invalid config shape" }));
 
-      if (!fs.existsSync(CONFIG_FILE + ".bak")) fs.writeFileSync(CONFIG_FILE + ".bak", JSON.stringify(current, null, 2));
+      if (current && current.brand && current.services) {
+        fs.writeFileSync(CONFIG_FILE + ".bak", JSON.stringify(current, null, 2)); // previous version
+      }
       fs.writeFileSync(CONFIG_FILE, JSON.stringify(body.config, null, 2));
       console.log("[api] config updated by owner at " + new Date().toISOString());
       return send(res, 200, JSON.stringify({ ok: true, savedAt: Date.now() }));
     } catch (e) {
-      return send(res, 500, JSON.stringify({ error: e.message }));
+      const code = e.status || 500;
+      send(res, code, JSON.stringify({ error: e.message }));
+      if (code === 413) res.once("finish", () => req.destroy());
+      return;
     }
   }
 

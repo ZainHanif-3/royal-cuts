@@ -1,0 +1,5 @@
+node_modules/
+config.json.bak
+.srv.log
+.srv.err
+*.log

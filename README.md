@@ -101,6 +101,10 @@ Then open `http://localhost:3000` — site at `/`, dashboard at `/admin.html`.
 | Booking submit (empty) | blocked, no popup |
 | Booking submit (filled) | opens `https://wa.me/923001234567?text=…` with all fields |
 | Layout at 360×780 | 0px horizontal overflow, burger drawer opens |
+| `POST /api/config` wrong password | `401 {"error":"invalid password"}` |
+| `POST /api/config` 9 MB body | `413 {"error":"payload too large (max 8 MB)"}`, `config.json` untouched |
+| `config.json.bak` | rewritten to the **previous** version on every save |
+| Supervisor QA | PASS — 22/22 checks |
 
 ---
 
