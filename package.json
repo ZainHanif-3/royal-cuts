@@ -1,0 +1,13 @@
+{
+  "name": "royal-cuts",
+  "version": "1.0.0",
+  "description": "Royal Cuts — Barber & Grooming Studio website with owner dashboard (ZN DEVELOPER)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["barbershop", "website", "dashboard", "zn-developer"],
+  "author": "ZN DEVELOPER — Zain Hanif",
+  "license": "MIT"
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Royal Cuts</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e8b923'/><text x='50' y='68' font-size='52' font-family='Arial' font-weight='900' text-anchor='middle' fill='%23101014'>RC</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ============ LOGIN ============ -->
+<div class="login-wrap" id="loginView">
+  <div class="login-card">
+    <div class="brand-mark" style="width:58px;height:58px;font-size:20px;margin:0 auto 18px">RC</div>
+    <h1>Owner Dashboard</h1>
+    <p>Royal Cuts — manage pictures, prices &amp; design</p>
+    <form id="loginForm">
+      <div class="field"><label>Password</label><input type="password" id="pw" placeholder="Enter admin password" required autocomplete="current-password"></div>
+      <button class="btn" style="width:100%" type="submit">Sign In</button>
+      <div class="form-msg err" id="loginMsg"></div>
+    </form>
+    <a href="index.html" class="back-link">← Back to website</a>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="dash" id="dashView" hidden>
+  <aside class="side">
+    <div class="side-brand"><div class="brand-mark">RC</div><div><b>ROYAL CUTS</b><small>Owner Panel</small></div></div>
+    <nav class="side-nav" id="sideNav">
+      <button data-tab="overview" class="active">📊 Overview</button>
+      <button data-tab="general">🎨 Design &amp; Brand</button>
+      <button data-tab="services">💈 Services &amp; Prices</button>
+      <button data-tab="hairstyles">✂️ Hairstyles</button>
+      <button data-tab="gallery">🖼️ Gallery</button>
+      <button data-tab="team">🧑‍🎤 Barbers</button>
+      <button data-tab="contact">📞 Contact &amp; Hours</button>
+      <button data-tab="backup">💾 Backup / Publish</button>
+    </nav>
+    <div class="side-foot">
+      <a href="index.html" class="btn ghost" style="width:100%">View Site</a>
+      <button class="btn" id="logoutBtn" style="width:100%;margin-top:10px">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div><h2 id="tabTitle">Overview</h2><p class="top-sub">Changes apply instantly to your live site.</p></div>
+      <div class="top-actions">
+        <span class="pill" id="saveState">All changes saved locally</span>
+        <button class="btn" id="saveBtn">💾 Save Changes</button>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section class="tab active" id="tab-overview">
+      <div class="kpi-row" id="kpiRow"></div>
+      <div class="panel">
+        <h3>Quick actions</h3>
+        <div class="qa-grid">
+          <button class="qa" data-go="general">Change hero picture</button>
+          <button class="qa" data-go="services">Edit service prices</button>
+          <button class="qa" data-go="hairstyles">Swap hairstyle photos</button>
+          <button class="qa" data-go="general">Change theme colours</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>How it works</h3>
+        <ol class="steps">
+          <li>Edit anything on the left — text, prices, colours, pictures.</li>
+          <li>Press <b>💾 Save Changes</b>. Your live site updates immediately.</li>
+          <li>Open <b>Backup / Publish</b> to download the updated <code>config.json</code> and keep a permanent copy (or hand it to your developer to push).</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- GENERAL / DESIGN -->
+    <section class="tab" id="tab-general">
+      <div class="panel">
+        <h3>Brand identity</h3>
+        <div class="g2">
+          <label>Shop name<input data-c="brand.name" id="f_brandName"></label>
+          <label>Logo letters<input data-c="brand.logoMark" maxlength="3" id="f_logoMark"></label>
+          <label>Tagline<input data-c="brand.tagline"></label>
+          <label>Small text under name<input data-c="brand.tagline2"></label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Hero section</h3>
+        <div class="g2">
+          <label>Headline<input data-c="hero.headline" id="f_headline"></label>
+          <label>Badge text<input data-c="hero.badge"></label>
+          <label style="grid-column:1/-1">Sub text<textarea rows="2" data-c="hero.sub"></textarea></label>
+          <label>Primary button<input data-c="hero.ctaPrimary"></label>
+          <label>Secondary button<input data-c="hero.ctaSecondary"></label>
+        </div>
+        <div class="img-edit">
+          <div class="img-prev"><img id="heroPrev" alt="hero"></div>
+          <div class="img-ctrl">
+            <b>Hero background picture</b>
+            <p>Paste an image URL, or upload a file from your device.</p>
+            <input type="text" data-c="hero.image" id="f_heroImg">
+            <div class="row-btns">
+              <label class="btn ghost" style="cursor:pointer">📤 Upload picture<input type="file" accept="image/*" hidden data-target="hero.image"></label>
+              <button class="btn ghost" data-reset="hero.image">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Theme colours (design)</h3>
+        <div class="g3">
+          <label>Primary accent <input type="color" data-c="theme.accent"></label>
+          <label>Secondary accent <input type="color" data-c="theme.accent2"></label>
+          <label>Background <input type="color" data-c="theme.dark"></label>
+          <label>Card surface <input type="color" data-c="theme.surface"></label>
+        </div>
+        <div class="swatches" id="presetSwatches">
+          <button data-accent="#e8b923" data-accent2="#ff7a18">Classic Gold</button>
+          <button data-accent="#00e5ff" data-accent2="#7c4dff">Neon Ice</button>
+          <button data-accent="#ff4d6d" data-accent2="#ff9e00">Crimson</button>
+          <button data-accent="#43e97b" data-accent2="#38f9d7">Emerald</button>
+          <button data-accent="#f7971e" data-accent2="#ffd200">Amber</button>
+          <button data-accent="#c471ed" data-accent2="#f64f59">Magenta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="tab" id="tab-services">
+      <div class="panel">
+        <div class="panel-head"><h3>Services &amp; prices (Rs)</h3><button class="btn" id="addService">＋ Add Service</button></div>
+        <div class="list" id="serviceList"></div>
+      </div>
+    </section>
+
+    <!-- HAIRSTYLES -->
+    <section class="tab" id="tab-hairstyles">
+      <div class="panel">
+        <div class="panel-head"><h3>Hairstyle cards &amp; prices</h3><button class="btn" id="addStyle">＋ Add Hairstyle</button></div>
+        <div class="list" id="styleList"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="tab" id="tab-gallery">
+      <div class="panel">
+        <div class="panel-head"><h3>Gallery pictures</h3><button class="btn" id="addGal">＋ Add Picture</button></div>
+        <div class="gal-list" id="galList"></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="tab" id="tab-team">
+      <div class="panel">
+        <div class="panel-head"><h3>Barbers</h3><button class="btn" id="addBarber">＋ Add Barber</button></div>
+        <div class="list" id="teamList"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="tab" id="tab-contact">
+      <div class="panel">
+        <h3>Contact &amp; opening hours</h3>
+        <div class="g2">
+          <label>Phone<input data-c="contact.phone"></label>
+          <label>WhatsApp number (digits only)<input data-c="contact.whatsapp"></label>
+          <label>Email<input data-c="contact.email"></label>
+          <label>Opening hours<input data-c="contact.hours"></label>
+          <label style="grid-column:1/-1">Address<textarea rows="2" data-c="contact.address"></textarea></label>
+          <label style="grid-column:1/-1">Google Maps embed URL<input data-c="contact.mapEmbed"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKUP -->
+    <section class="tab" id="tab-backup">
+      <div class="panel">
+        <h3>Backup &amp; publish</h3>
+        <p class="muted">Your edits are stored in this browser. Download the config file to keep a permanent, shareable copy — your developer can commit it to GitHub so changes go live for everyone.</p>
+        <div class="row-btns" style="margin-top:18px">
+          <button class="btn" id="dlConfig">⬇ Download config.json</button>
+          <label class="btn ghost" style="cursor:pointer">⬆ Import config.json<input type="file" accept=".json,application/json" hidden id="importFile"></label>
+          <button class="btn ghost" id="resetAll">Reset to defaults</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Admin password</h3>
+        <div class="g2">
+          <label>New password<input type="text" id="newPw" placeholder="leave blank to keep current"></label>
+        </div>
+        <button class="btn" id="savePw" style="margin-top:14px">Update password</button>
+      </div>
+      <div class="panel">
+        <h3>Raw config preview</h3>
+        <pre id="rawCfg"></pre>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Cuts — Barber & Grooming Studio | Lahore, Pakistan</title>
+<meta name="description" content="Royal Cuts — premium barber & grooming studio in Lahore. Fades, beard sculpting, royal shaves, facials and full grooming packages from Rs 100 to Rs 1000.">
+<meta name="theme-color" content="#0b0b0f">
+<meta property="og:title" content="Royal Cuts — Barber & Grooming Studio">
+<meta property="og:description" content="Sharp cuts. Bold style. Pakistan's premium barber experience.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e8b923'/><text x='50' y='68' font-size='52' font-family='Arial' font-weight='900' text-anchor='middle' fill='%23101014'>RC</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <a href="#home" class="brand">
+    <div class="brand-mark" id="brandMark">RC</div>
+    <div class="brand-name" id="brandName">ROYAL <span>CUTS</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#styles">Hairstyles</a>
+    <a href="#prices">Price List</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#team">Team</a>
+    <a href="#booking">Book</a>
+  </div>
+  <a href="#booking" class="btn desk">Book Now</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="badge"><i></i> <span id="heroBadge">Open Today · 10:00 AM – 11:00 PM</span></div>
+      <h1 id="heroH1">Sharp Cuts.<br><span class="line3d">Bold Style.</span></h1>
+      <p class="lead" id="heroSub">Pakistan's premium barber experience — fades, beards, shaves and grooming, handcrafted by master barbers.</p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn" id="ctaPrimary">Book Appointment</a>
+        <a href="#styles" class="btn ghost" id="ctaSecondary">View Styles</a>
+      </div>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="pole-3d">
+        <div class="pole-stripe"></div>
+        <div class="pole-cap top"></div>
+        <div class="pole-cap bot"></div>
+      </div>
+      <div class="float-tool t1">✂️</div>
+      <div class="float-tool t2">💈</div>
+      <div class="float-tool t3">🪒</div>
+      <div class="float-tool t4">🧔</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid grid-4" id="statsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Our Services</div>
+      <h2 class="sec-title">Grooming Services &amp; <em>Prices</em></h2>
+      <p class="sec-sub">Every service below is performed by trained barbers with sterilised, single-use tools where applicable.</p>
+    </div>
+    <div class="grid grid-4" id="serviceGrid"></div>
+  </div>
+</section>
+
+<!-- ================= HAIRSTYLES ================= -->
+<section class="styles" id="styles">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Style Menu</div>
+      <h2 class="sec-title">Pick Your <em>Hairstyle</em></h2>
+      <p class="sec-sub">Tap any style to book it. All prices in Pakistani Rupees (Rs).</p>
+    </div>
+    <div class="grid grid-4" id="styleGrid"></div>
+  </div>
+</section>
+
+<!-- ================= PRICE LIST ================= -->
+<section class="pricelist" id="prices">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Full Menu</div>
+      <h2 class="sec-title">Complete <em>Saloon</em> Price List</h2>
+      <p class="sec-sub">Transparent pricing — no surprises at the counter.</p>
+    </div>
+    <div class="price-cols reveal">
+      <div class="price-box">
+        <h3><span>💈</span> Hair &amp; Shave</h3>
+        <p>Cuts, styling, colour and classic barbering.</p>
+        <div id="priceListA"></div>
+      </div>
+      <div class="price-box">
+        <h3><span>🧴</span> Beard, Skin &amp; Care</h3>
+        <p>Beard artistry, facials, massage and packages.</p>
+        <div id="priceListB"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Our Work</div>
+      <h2 class="sec-title">Inside the <em>Studio</em></h2>
+    </div>
+    <div class="masonry reveal" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">The Masters</div>
+      <h2 class="sec-title">Meet Your <em>Barbers</em></h2>
+    </div>
+    <div class="grid grid-3" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Reviews</div>
+      <h2 class="sec-title">What Clients <em>Say</em></h2>
+    </div>
+    <div class="grid grid-3" id="testiGrid"></div>
+  </div>
+</section>
+
+<!-- ================= BOOKING ================= -->
+<section class="booking" id="booking">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Appointments</div>
+      <h2 class="sec-title">Book Your <em>Seat</em></h2>
+      <p class="sec-sub">Fill the form and we'll confirm on WhatsApp within minutes.</p>
+    </div>
+    <div class="book-grid">
+      <form class="book-card reveal" id="bookForm">
+        <div class="form-2">
+          <div class="field"><label>Full Name</label><input type="text" id="bkName" placeholder="Ali Khan" required></div>
+          <div class="field"><label>Phone / WhatsApp</label><input type="tel" id="bkPhone" placeholder="0300 1234567" required></div>
+        </div>
+        <div class="field">
+          <label>Service</label>
+          <select id="bkService"></select>
+        </div>
+        <div class="form-2">
+          <div class="field"><label>Date</label><input type="date" id="bkDate" required></div>
+          <div class="field"><label>Time</label><input type="time" id="bkTime" required></div>
+        </div>
+        <div class="field"><label>Notes (optional)</label><textarea id="bkNote" rows="3" placeholder="Skin fade, short on sides..."></textarea></div>
+        <button type="submit" class="btn" style="width:100%">Confirm Booking Request</button>
+        <div class="form-msg" id="bookMsg"></div>
+      </form>
+
+      <div class="info-panel reveal">
+        <div class="info-tile"><div class="ic">📞</div><div><h5>Call / WhatsApp</h5><p id="cPhone">+92 300 1234567</p></div></div>
+        <div class="info-tile"><div class="ic">📍</div><div><h5>Location</h5><p id="cAddr">Main Boulevard, Gulberg III, Lahore, Pakistan</p></div></div>
+        <div class="info-tile"><div class="ic">🕒</div><div><h5>Opening Hours</h5><p id="cHours">Mon – Sun · 10:00 AM – 11:00 PM</p></div></div>
+        <div class="info-tile"><div class="ic">✉️</div><div><h5>Email</h5><p id="cMail">hello@royalcuts.pk</p></div></div>
+        <div class="map-box"><iframe id="mapFrame" src="https://www.google.com/maps?q=Gulberg+III+Lahore&output=embed" loading="lazy" title="Map"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="brand" style="margin-bottom:16px">
+          <div class="brand-mark">RC</div>
+          <div class="brand-name">ROYAL <span>CUTS</span></div>
+        </div>
+        <p>Premium barber &amp; grooming studio. Master barbers, sterilised tools, honest prices — since 2013.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="TikTok">🎵</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <a href="#services">Services</a><a href="#styles">Hairstyles</a>
+        <a href="#prices">Price List</a><a href="#gallery">Gallery</a><a href="#booking">Book Now</a>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#services">Haircuts</a><a href="#services">Beard Styling</a>
+        <a href="#services">Royal Shave</a><a href="#services">Facial</a><a href="#services">Hair Colour</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p id="fAddr">Main Boulevard, Gulberg III, Lahore</p>
+        <a id="fPhone" href="tel:+923001234567">+92 300 1234567</a>
+        <a id="fMail" href="mailto:hello@royalcuts.pk">hello@royalcuts.pk</a>
+        <p id="fHours">Mon – Sun · 10:00 AM – 11:00 PM</p>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="year"></span> Royal Cuts — Barber &amp; Grooming Studio. All rights reserved.</span>
+      <span>Built by <strong style="color:var(--accent)">ZN DEVELOPER</strong> · Zain Hanif</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="waFab" href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
