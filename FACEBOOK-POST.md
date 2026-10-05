@@ -1,7 +1,8 @@
 # Facebook sales post — ZN DEVELOPER
 
 **Account:** https://www.facebook.com/zainhanifg/ (Zain Hanif)
-**Status:** browser session is logged out — paste this after logging in.
+**Status:** ✅ PUBLISHED — Public, with 3 screenshots attached.
+**Proof:** `screenshots/07-facebook-post.png`
 **Attach these images:**
 - `F:\wesites\royal-cuts\screenshots\01-home-hero.png`
 - `F:\wesites\royal-cuts\screenshots\03-hairstyles.png`
